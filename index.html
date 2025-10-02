@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Modern Webpage</title>
+  <meta name="description" content="A simple, responsive HTML template with a hero, cards and a contact form." />
+  <style>
+    /* Basic reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      line-height:1.45;
+      color:#111;
+      background:linear-gradient(180deg,#f7fbff,#ffffff);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Container */
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    /* Header / Nav */
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:inherit}
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#6c5ce7,#00b894);
+      display:inline-grid;place-items:center;color:white;font-weight:700;font-size:18px;
+      box-shadow:0 6px 18px rgba(12,15,30,0.06);
+    }
+    nav ul{display:flex;gap:14px;list-style:none;padding:0;margin:0}
+    nav a{color:inherit;text-decoration:none;padding:8px;border-radius:8px}
+    nav a:focus,nav a:hover{background:rgba(0,0,0,0.04)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:40px 0}
+    .hero-grid{display:flex;flex-direction:column;gap:16px}
+    .h-title{font-size:clamp(1.5rem,2.6vw,2.3rem);margin:0}
+    .h-sub{margin:0;color:#555;max-width:60ch}
+    .cta-row{display:flex;gap:12px;margin-top:6px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;
+      border:0;cursor:pointer;font-weight:600
+    }
+    .btn-primary{background:#6c5ce7;color:white;box-shadow:0 8px 20px rgba(108,92,231,0.18)}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.08)}
+
+    /* Image card */
+    .hero-visual{background:linear-gradient(180deg,#fff,#f2f6ff);border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(30,40,80,0.06)}
+    .placeholder{
+      height:200px;border-radius:10px;background:linear-gradient(90deg,#e9f0ff,#fff);display:flex;align-items:center;justify-content:center;color:#2b3a67;font-weight:600
+    }
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:28px 0}
+    .card{background:white;padding:16px;border-radius:12px;box-shadow:0 8px 20px rgba(15,25,50,0.04)}
+    .card h3{margin:6px 0 8px;font-size:1.05rem}
+    .card p{margin:0;color:#555;font-size:0.95rem}
+
+    /* Contact form */
+    .contact{display:grid;grid-template-columns:1fr;gap:12px;padding:18px;background:linear-gradient(180deg,#ffffff,#fbfcff);border-radius:12px}
+    label{font-size:0.9rem;color:#333}
+    input[type="text"],input[type="email"],textarea{
+      width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef;font-size:0.95rem;margin-top:6px
+    }
+    textarea{min-height:110px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{font-size:0.85rem;color:#666}
+
+    /* Footer */
+    footer{padding:20px 0;color:#555;font-size:0.9rem;border-top:1px solid rgba(0,0,0,0.04);margin-top:28px;text-align:center}
+
+    /* Responsive */
+    @media(min-width:900px){
+      .hero{grid-template-columns:1fr 420px}
+      .hero-grid{align-self:center}
+      .hero-visual{align-self:center}
+      .form-row{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:899px){
+      .form-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="#" class="brand" aria-label="Homepage">
+        <div class="logo">SM</div>
+        <div>
+          <strong>Simple Modern</strong><div style="font-size:0.85rem;color:#666">Clean HTML template</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#" onclick="alert('Demo: replace this link')">Demo</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-grid">
+          <h1 id="hero-heading" class="h-title">Beautiful, minimal web templates — ready to use</h1>
+          <p class="h-sub">A single-file example that demonstrates layout, cards, and a working contact form with simple client-side validation. Copy, modify, and go live.</p>
+          <div class="cta-row">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact us</button>
+            <button class="btn btn-ghost" onclick="downloadExample()">Download HTML</button>
+          </div>
+
+          <div style="margin-top:18px" id="features">
+            <h2 style="margin:0 0 12px 0;font-size:1.1rem">What you'll get</h2>
+            <div class="features">
+              <div class="card">
+                <strong>Responsive layout</strong>
+                <p>Looks great on phones, tablets and desktops without any frameworks.</p>
+              </div>
+              <div class="card">
+                <strong>Accessible HTML</strong>
+                <p>Semantic elements, labels, and keyboard-friendly interactions.</p>
+              </div>
+              <div class="card">
+                <strong>Easy to customize</strong>
+                <p>Single-file CSS + JS so you can quickly edit colors and content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-visual" aria-hidden="false" role="img" aria-label="Mockup preview">
+          <div class="placeholder">Mockup / Image</div>
+        </aside>
+      </section>
+
+      <section style="margin-top:6px" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" style="font-size:1.1rem;margin-bottom:10px">Get in touch</h2>
+        <form class="contact" onsubmit="return handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required placeholder="Your name" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="you@example.com" />
+            </div>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us what you need..." required></textarea>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="note">We reply within 1–2 business days.</div>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn btn-primary">Send message</button>
+              <button type="button" class="btn btn-ghost" onclick="document.querySelector('form').reset()">Reset</button>
+            </div>
+          </div>
+
+          <div id="form-status" role="status" aria-live="polite" style="margin-top:8px;color:#1b6;display:none">Message sent!</div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Simple Modern — Built with plain HTML, CSS & JS.
+    </footer>
+  </div>
+
+  <script>
+    // Small JS helpers
+
+    // Set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Validate basic form and show a faux "sent" message
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      // very small validations (server-side required for real apps)
+      if(!name){alert('Please enter your name.'); form.name.focus(); return false;}
+      if(!email || !/^\S+@\S+\.\S+$/.test(email)){alert('Please enter a valid email.'); form.email.focus(); return false;}
+      if(!message){alert('Please enter a message.'); form.message.focus(); return false;}
+
+      // Simulate sending
+      const status = document.getElementById('form-status');
+      status.style.display = 'block';
+      status.style.color = '#1b6'; status.textContent = 'Sending…';
+
+      // Simulate async send (replace with real fetch to your API)
+      setTimeout(() => {
+        status.textContent = 'Thanks — your message has been received.';
+        form.reset();
+      }, 750);
+
+      return false;
+    }
+
+    // Provide a quick download of this HTML for convenience
+    function downloadExample(){
+      const html = '<!doctype html>\\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'simple-modern.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
